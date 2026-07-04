@@ -7,35 +7,99 @@ assumes any particular codebase.
 To use: copy any `skills/<name>` folder into `~/.claude/skills/` (available in
 every project) or a project's `.claude/skills/` (that project only).
 
-## Skills
+## ⚠️ Before installing: one real duplication
 
-| Skill | What it does | Source | License |
-|---|---|---|---|
-| `banner-design` | Social/ad/web/print banner design direction | [ui-ux-pro-max-skill](https://github.com/nextlevelbuilder/ui-ux-pro-max-skill) | MIT |
-| `brand` | Brand voice, visual identity, messaging consistency | ui-ux-pro-max-skill | MIT |
-| `design` | Logos, icons, CIP mockups, banners, social assets | ui-ux-pro-max-skill | MIT |
-| `design-system` | Design tokens (primitive→semantic→component), slide generation | ui-ux-pro-max-skill | MIT |
-| `slides` | Strategic HTML presentations with Chart.js | ui-ux-pro-max-skill | MIT |
-| `ui-styling` | shadcn/ui + Tailwind component patterns, theming | ui-ux-pro-max-skill | MIT |
-| `ui-ux-pro-max` | Core design-intelligence engine: accessibility, color, typography, layout rules across 10+ stacks | ui-ux-pro-max-skill | MIT |
-| `karpathy-guidelines` | Behavioral guidelines to reduce common LLM coding mistakes (surgical changes, surfacing assumptions, verifiable success criteria) | [andrej-karpathy-skills](https://github.com/forrestchang/andrej-karpathy-skills) | MIT |
-| `babysit` | Watch a PR/review cycle until it's actually mergeable | [claude-mem](https://github.com/thedotmack/claude-mem) | Apache-2.0 |
-| `design-is` | Audit a design against Dieter Rams' ten "Good design is..." principles | claude-mem | Apache-2.0 |
-| `do` | Execute a phased implementation plan using subagents | claude-mem | Apache-2.0 |
-| `how-it-works` | Explain how a system/codebase works | claude-mem | Apache-2.0 |
-| `knowledge-agent` | Build/query AI knowledge bases from claude-mem observation history | claude-mem | Apache-2.0 |
-| `learn-codebase` | Build understanding of an unfamiliar codebase | claude-mem | Apache-2.0 |
-| `make-plan` | Produce an implementation plan | claude-mem | Apache-2.0 |
-| `mem-search` | Search claude-mem's cross-session memory DB (needs claude-mem installed) | claude-mem | Apache-2.0 |
-| `oh-my-issues` | Cluster a GitHub issue backlog by root cause into plan-master issues | claude-mem | Apache-2.0 |
-| `pathfinder` | Map a codebase into feature-grouped flowcharts, propose unified architecture | claude-mem | Apache-2.0 |
-| `smart-explore` | Token-optimized structural code search via tree-sitter AST parsing | claude-mem | Apache-2.0 |
-| `standup` | Read-only standup across git worktrees/branches/PRs, one consolidation plan | claude-mem | Apache-2.0 |
-| `timeline-report` | Narrative "Journey Into [Project]" report from claude-mem's timeline | claude-mem | Apache-2.0 |
-| `version-bump` | Semantic versioning + release workflow for Claude Code plugins | claude-mem | Apache-2.0 |
-| `weekly-digests` | Week-by-week narrative digest of a project's claude-mem timeline | claude-mem | Apache-2.0 |
-| `what-the` | Plain-English breakdown of something technical | claude-mem | Apache-2.0 |
-| `wowerpoint` | Turn one document into a slide-deck PDF | claude-mem | Apache-2.0 |
+`design` is a monolithic skill whose own description covers the same ground
+as `brand`, `banner-design`, `slides`, and (partially) `design-system`
+combined. Installing `design` *alongside* those four means an overlapping
+request (e.g. "design a banner") can match more than one skill at once, with
+no reliable way to predict which one Claude Code picks.
+
+**Pick one side, don't install both:**
+- Want one skill that covers everything → install `design` only.
+- Want narrower, more predictable matching per task → install `brand` +
+  `banner-design` + `slides` + `design-system`, skip `design`.
+
+This repo keeps all of them for reference regardless of which you activate.
+
+## Design & Branding
+
+| Skill | What it does | License |
+|---|---|---|
+| `ui-ux-pro-max` | Core design-intelligence engine: 50+ styles, color palettes, font pairings, accessibility/UX rules across 10+ stacks | MIT |
+| `ui-styling` | shadcn/ui + Tailwind implementation patterns, theming, dark mode | MIT |
+| `design-system` | Design tokens (primitive→semantic→component), CSS variables, component specs | MIT |
+| `brand` | Brand voice, visual identity, messaging consistency | MIT |
+| `banner-design` | Social/ad/web/print banner design direction | MIT |
+| `slides` | Strategic HTML presentations with Chart.js | MIT |
+| `design` | All of the above bundled into one skill — see duplication warning | MIT |
+
+All from [ui-ux-pro-max-skill](https://github.com/nextlevelbuilder/ui-ux-pro-max-skill).
+
+## Codebase Understanding
+
+Different depths, not alternatives — pick by how much context you need:
+
+| Skill | Depth | Use when |
+|---|---|---|
+| `smart-explore` | Targeted, tree-sitter AST-based search | Quick lookup — "where's X defined," "find this function" |
+| `learn-codebase` | Exhaustive — reads every source file in full | Onboarding onto a new/unfamiliar project |
+| `pathfinder` | Architecture-level, cross-feature flowcharts | Auditing before a refactor, unifying duplicated systems (hands off to `make-plan`) |
+
+## Planning & Execution (a pipeline, not a menu)
+
+`pathfinder` and `design-is` both diagnose and hand off to `make-plan`, which
+`do` then executes. Use them in sequence, not as competing options:
+
+```
+pathfinder (architecture audit)  ─┐
+                                   ├─→  make-plan  →  do
+design-is (design-quality audit) ─┘
+```
+
+| Skill | Role |
+|---|---|
+| `pathfinder` | Diagnose: map codebase, propose unified architecture |
+| `design-is` | Diagnose: audit a design against Dieter Rams' principles |
+| `make-plan` | Plan: phased implementation plan with documentation discovery |
+| `do` | Execute: carry out a plan (especially one from `make-plan`) using subagents |
+
+## Memory & Reporting (claude-mem required)
+
+Same underlying data (claude-mem's observation/timeline history), different
+output shape — **all four are inert without the
+[claude-mem](https://github.com/thedotmack/claude-mem) tool installed and
+recording history**:
+
+| Skill | Output |
+|---|---|
+| `mem-search` | Ad hoc query — "did we solve this before?" |
+| `knowledge-agent` | Curated, reusable "knowledge base" built from observations |
+| `timeline-report` | One-shot full narrative project history |
+| `weekly-digests` | Serial week-by-week narrative digest |
+| `how-it-works` | Explains how claude-mem itself works (observation capture, memory injection) — not a general codebase explainer |
+
+## Git / Issue Workflow
+
+| Skill | What it does |
+|---|---|
+| `babysit` | Watch **one** PR/review cycle until it's actually mergeable |
+| `standup` | Read-only comparison **across** worktrees/branches/PRs into one consolidation plan |
+| `oh-my-issues` | Cluster an issue **backlog** by root cause into plan-master issues |
+
+## Release & Misc
+
+| Skill | What it does |
+|---|---|
+| `version-bump` | Semantic versioning + release workflow for Claude Code plugins |
+| `what-the` | Plain-English breakdown of something technical |
+| `wowerpoint` | Turn one document into a slide-deck PDF |
+| `karpathy-guidelines` | Behavioral guidelines to reduce common LLM coding mistakes (surgical changes, surfacing assumptions, verifiable success criteria) — [source](https://github.com/forrestchang/andrej-karpathy-skills), MIT |
+
+Everything in Git/Issue Workflow and Release & Misc (except `karpathy-guidelines`)
+is from claude-mem, Apache-2.0.
+
+---
 
 All entries reflect only the `SKILL.md` frontmatter reviewed at import time,
 not a full read of every script — read a skill's `SKILL.md` before relying
@@ -43,9 +107,6 @@ on it for anything consequential.
 
 ## Notes
 
-- `mem-search` only returns results if the companion
-  [claude-mem](https://github.com/thedotmack/claude-mem) tool is also
-  installed and has recorded session history — it's inert without it.
 - Some `design`/`banner-design` actions (logo/icon generation) call out to
   Gemini image generation; those specific actions need that integration
   configured to work.

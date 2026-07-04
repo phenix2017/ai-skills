@@ -79,6 +79,19 @@ recording history**:
 | `weekly-digests` | Serial week-by-week narrative digest |
 | `how-it-works` | Explains how claude-mem itself works (observation capture, memory injection) — not a general codebase explainer |
 
+## Review & Process Discipline
+
+Behavioral roles/processes, not domain knowledge — apply regardless of stack.
+
+| Skill | What it does |
+|---|---|
+| `skeptical-architect` | Architecture-audit role: read code first, ask "what breaks if X changes?", rank findings by silent-failure severity, get sign-off before implementing |
+| `staged-change` | Four-stage gate for non-trivial changes — Auditor → Challenger → Implementer → Explainer — with a hard pause before code is touched |
+| `ui-layout-audit` | Ordered UI audit (spatial mapping → grouping → Fitts's Law → contrast → iconography → state → padding) plus a pre/post/boundary-condition method for proving layout math before writing code |
+| `knowledge-cutoff-discipline` | Trust the codebase over training knowledge for version-specific facts (model names, SDK methods, pricing); flag uncertainty instead of silently "correcting" values |
+
+`karpathy-guidelines` above overlaps with `skeptical-architect` and `staged-change` on caution/surgical-change philosophy — they're complementary, not redundant: `karpathy-guidelines` governs how you write code, the other two govern the review/planning process around it.
+
 ## Git / Issue Workflow
 
 | Skill | What it does |

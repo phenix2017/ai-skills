@@ -1,0 +1,17 @@
+This repository bundles Claude Code skills gathered from multiple sources for
+personal reuse across projects. Licensing varies by skill — see README.md for
+the per-skill source and license table.
+
+---
+
+The following skills are derived from the Claude-Mem project and are used
+under the Apache License, Version 2.0:
+
+babysit, design-is, do, how-it-works, knowledge-agent, learn-codebase,
+make-plan, mem-search, oh-my-issues, pathfinder, smart-explore, standup,
+timeline-report, version-bump, weekly-digests, what-the, wowerpoint
+
+Claude-Mem
+Copyright 2026 Alex Newman
+Licensed under the Apache License, Version 2.0
+Source: https://github.com/thedotmack/claude-mem

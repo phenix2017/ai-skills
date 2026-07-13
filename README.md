@@ -92,6 +92,12 @@ Behavioral roles/processes, not domain knowledge — apply regardless of stack.
 
 `karpathy-guidelines` above overlaps with `skeptical-architect` and `staged-change` on caution/surgical-change philosophy — they're complementary, not redundant: `karpathy-guidelines` governs how you write code, the other two govern the review/planning process around it.
 
+## Career Workflow
+
+| Skill bundle | What it does |
+|---|---|
+| `career-toolkit` | Bundled job-search workflow: JD decoding, resume building, behavioral interview prep, salary negotiation, and offer comparison |
+
 ## Git / Issue Workflow
 
 | Skill | What it does |

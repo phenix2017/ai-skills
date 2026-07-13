@@ -1,0 +1,45 @@
+﻿{
+  "name": "career-toolkit",
+  "display_name": "Career Toolkit",
+  "version": "1.0.0",
+  "description": "Organized bundle of five career workflow skills: JD analysis, resume building, behavioral interview prep, salary negotiation, and offer comparison.",
+  "author": "Career Toolkit",
+  "package_type": "codex-skill-bundle",
+  "entrypoint": "SKILL.md",
+  "skills": [
+    {
+      "name": "job-description-skill",
+      "path": "skills/job-description-skill/SKILL.md",
+      "stage": "job_analysis"
+    },
+    {
+      "name": "resume-skill",
+      "path": "skills/resume-skill/SKILL.md",
+      "stage": "resume"
+    },
+    {
+      "name": "bq-skill",
+      "path": "skills/bq-skill/SKILL.md",
+      "stage": "interview_prep"
+    },
+    {
+      "name": "salary-negotiation-skill",
+      "path": "skills/salary-negotiation-skill/SKILL.md",
+      "stage": "negotiation"
+    },
+    {
+      "name": "offer-compare-skill",
+      "path": "skills/offer-compare-skill/SKILL.md",
+      "stage": "decision"
+    }
+  ],
+  "workflow": [
+    "job-description-skill",
+    "resume-skill",
+    "bq-skill",
+    "salary-negotiation-skill",
+    "offer-compare-skill"
+  ]
+}
+
+

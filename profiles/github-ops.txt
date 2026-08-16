@@ -1,0 +1,4 @@
+skills/babysit
+skills/standup
+skills/oh-my-issues
+skills/version-bump

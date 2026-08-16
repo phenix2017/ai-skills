@@ -7,6 +7,20 @@ assumes any particular codebase.
 To use: copy any `skills/<name>` folder into `~/.claude/skills/` (available in
 every project) or a project's `.claude/skills/` (that project only).
 
+Start with [CATALOG.md](CATALOG.md) for the sorted skill map, recommended install
+sets, and overlap notes. The `profiles/` folder contains plain-text install sets
+you can use as checklists:
+
+| Profile | Purpose |
+|---|---|
+| `profiles/core-coding.txt` | Daily coding, codebase reading, planning, and safer implementation |
+| `profiles/architecture-review.txt` | Architecture audits, refactor planning, and UI layout checks |
+| `profiles/design-suite-narrow.txt` | Narrow design skills with more predictable routing |
+| `profiles/design-suite-broad.txt` | Broad design coverage with fewer folders |
+| `profiles/memory-ops.txt` | claude-mem recall and reporting workflows |
+| `profiles/github-ops.txt` | PR monitoring, issue triage, and releases |
+| `profiles/career-workflow.txt` | Career Toolkit bundle |
+
 ## ⚠️ Before installing: one real duplication
 
 `design` is a monolithic skill whose own description covers the same ground

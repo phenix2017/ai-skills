@@ -1,0 +1,8 @@
+skills/smart-explore
+skills/learn-codebase
+skills/karpathy-guidelines
+skills/knowledge-cutoff-discipline
+skills/skeptical-architect
+skills/staged-change
+skills/make-plan
+skills/do

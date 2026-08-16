@@ -1,0 +1,6 @@
+skills/smart-explore
+skills/pathfinder
+skills/skeptical-architect
+skills/staged-change
+skills/ui-layout-audit
+skills/make-plan
